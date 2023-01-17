@@ -1,0 +1,48 @@
+<form [formGroup]="userForm"  *ngIf="Alldata" >
+    <div>
+        <input type="hidden" name="id"  formControlName="id" value="{{Alldata.length}}" />
+    </div>
+    <div>
+      <label for="first_name">Name</label>
+      <input type="text" id="first_name" name="first_name" formControlName="name"  value="{{userForm.value.name}}"required>
+    </div>
+    <div>
+      <label for="Designation">Designation</label>
+      <input type="text" id="Designation" name="Designation" formControlName="designation"  value="{{userForm.value.designation}}" required>
+    </div>
+    <div>
+      <label for="salary">salary</label>
+      <input type="number" id="salary" name="salary" formControlName="salary"  value="{{userForm.value.salary}}" required>
+    </div>
+    <div>
+      <button type="button" (click)="setValue()">Save</button>
+      <button type="button" (click)="reset()">Reset</button>
+    
+  <!-- <button type="button" (click)="getData()">GetAllemployee</button> -->
+    </div>
+  </form>
+  
+  
+  
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Designation</th>
+          <th>Salary</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let person of Alldata;let i = index" >
+          <td>{{person.name}}</td>
+          <td>{{person.designation}}</td>
+          <td>{{person.salary}}</td>
+          <td><button type="button" (click)="deleteemployee(i)">🗑</button>
+             <button type="button" (click)="onEdit(i)">🖋</button></td>
+        </tr>
+      </tbody>
+    </table>
+   
+  </div>
